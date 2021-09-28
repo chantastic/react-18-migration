@@ -1,3 +1,10 @@
+## Notes
+
+* `npm i react@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
+* `npm i react-dom@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
