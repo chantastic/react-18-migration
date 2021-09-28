@@ -1,5 +1,9 @@
 ## Notes
 
+### Gradual adoption strategy
+
+https://reactjs.org/blog/2021/06/08/the-plan-for-react-18.html#a-gradual-adoption-strategy
+
 ### Update dependencies
 
 - `npm i react@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
@@ -127,9 +131,9 @@ root.render(<App callback={() => console.log("renderered")} />);
 
 #### Remove extranious `unstable_batchedUpdates` usage
 
+### Concurrent "mode" is dead
 
-
-
+https://github.com/reactwg/react-18/discussions/64
 
 ---
 
