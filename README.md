@@ -113,6 +113,24 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(<App callback={() => console.log("renderered")} />);
 ```
 
+### Autamic batching
+
+#### Understand how event handler batching works in v16 and v17
+
+#### See Automatic batching in practice
+
+#### Opt-out of automitic batching in React 18 with flushSync()
+
+#### automatic batching with class components
+
+#### opt-out of automitic batching in class components with flushSync()
+
+#### Remove extranious `unstable_batchedUpdates` usage
+
+
+
+
+
 ---
 
 # Getting Started with Create React App
