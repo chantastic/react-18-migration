@@ -1,7 +1,117 @@
 ## Notes
 
-* `npm i react@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
-* `npm i react-dom@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
+### Update dependencies
+
+- `npm i react@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
+- `npm i react-dom@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
+- get new warning in console: `Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: [https://reactjs.org/link/switch-to-createroot](https://reactjs.org/link/switch-to-createroot)` (inactive at time of writing)
+
+### Update to createRoot()
+
+https://github.com/reactwg/react-18/discussions/5
+
+- Update to the new `ReactDOM.createRoot` api from `ReactDOM.render`
+
+**before**
+
+```jsx
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+
+**after**
+
+```jsx
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+#### Re-render to created container
+
+https://github.com/reactwg/react-18/discussions/5
+
+```jsx
+const container = document.getElementById("app");
+
+// Create a root.
+const root = ReactDOM.createRoot(container);
+
+// Initial render: Render an element to the root.
+root.render(<App tab="home" />);
+
+// During an update, there's no need to pass the container again.
+root.render(<App tab="profile" />);
+```
+
+### `createRoot` callback
+
+https://github.com/reactwg/react-18/discussions/5
+
+re-render to node
+
+```jsx
+let seconds = 0;
+
+let rerender = setInterval(() => {
+  seconds++;
+  // note
+  // happens at commitDetachRef *and* commitAttachRef via callback
+  root.render(<App seconds={seconds} />);
+}, 1000);
+```
+
+#### `hydrateRoot` (probably skip because we aren't covering server)
+
+https://github.com/reactwg/react-18/discussions/5
+
+### `createRoot` callback
+
+https://github.com/reactwg/react-18/discussions/5
+
+**before**
+
+```jsx
+import * as ReactDOM from "react-dom";
+
+function App() {
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(<App />, rootElement, () => console.log("rendered"));
+```
+
+**after**
+
+```jsx
+import * as ReactDOM from "react-dom";
+
+function App({ callback }) {
+  // Callback will be called when the div is first created.
+  return (
+    <div ref={callback}>
+      <h1>Hello World</h1>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App callback={() => console.log("renderered")} />);
+```
 
 ---
 

@@ -1,9 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
+function App({ callback }) {
   return (
-    <div className="App">
+    <div className="App" ref={callback}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
