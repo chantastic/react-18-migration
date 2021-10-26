@@ -1,22 +1,29 @@
-## Notes
+# Lessons
 
-### Gradual adoption strategy
+## The gradual adoption strategy of React 18
 
 https://reactjs.org/blog/2021/06/08/the-plan-for-react-18.html#a-gradual-adoption-strategy
 
-### Update dependencies
+## Update React dependencies using @next version tag
 
-- `npm i react@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
-- `npm i react-dom@next` (`18.0.0-alpha-05726d72c-20210927` at time of writing)
-- get new warning in console: `Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: [https://reactjs.org/link/switch-to-createroot](https://reactjs.org/link/switch-to-createroot)` (inactive at time of writing)
+- `npm i react@next`
+- `npm i react-dom@next`
+- get new warning in console
 
-### Update to createRoot()
+> Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot
 
-https://github.com/reactwg/react-18/discussions/5
+_Links_
+
+- https://www.npmjs.com/package/react
+- https://www.npmjs.com/package/react-dom
+
+### Replace legacy root API (render) with new root API (createRoot)
 
 - Update to the new `ReactDOM.createRoot` api from `ReactDOM.render`
-
-**before**
+- Simple mechanical operation
+  - Insert `createRoot` between `ReactDOM` module and `render()` call
+  - Move root element from `render` to `createRoot`
+- Warning goes away, meaning that we're now using the React 18 render, not the v17 legacy mode
 
 ```jsx
 ReactDOM.render(
@@ -37,9 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-#### Re-render to created container
-
-https://github.com/reactwg/react-18/discussions/5
+- The benefit of this API is the ability to re-render to the root, without having to pass the root again.
 
 ```jsx
 const container = document.getElementById("app");
@@ -53,6 +58,24 @@ root.render(<App tab="home" />);
 // During an update, there's no need to pass the container again.
 root.render(<App tab="profile" />);
 ```
+
+https://github.com/reactwg/react-18/discussions/5
+
+---
+
+## Notes
+
+TODO:
+
+- lesson titles
+- course descriptions
+- https://howtoegghead.com/instructor/style-guide/thinking-in-lessons/
+
+---
+
+### Use both classic renderer and React 18 renderer
+
+// TODO
 
 ### `createRoot` callback
 
@@ -117,6 +140,13 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(<App callback={() => console.log("renderered")} />);
 ```
 
+#### alternatives
+
+- this will call the callback with the DOM element ref. demonstrate that
+- you can also wrap the whole thing in a new div, if you don't want to modify app
+  - can't use fragment because there is no ref
+- could also just call the function if you don't care about getting a reference to the dom node
+
 ### Autamic batching
 
 #### Understand how event handler batching works in v16 and v17
@@ -131,79 +161,8 @@ root.render(<App callback={() => console.log("renderered")} />);
 
 #### Remove extranious `unstable_batchedUpdates` usage
 
-### Concurrent "mode" is dead
+//
+
+### [outro] Concurrent "mode" is dead (what's next)
 
 https://github.com/reactwg/react-18/discussions/64
-
----
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
