@@ -1,4 +1,8 @@
-# Lessons
+# React 18 Migration Course
+
+## How to use this resource
+
+## Lessons
 
 ## The gradual adoption strategy of React 18
 
@@ -27,10 +31,10 @@ _Links_
 
 ```jsx
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 ```
 
@@ -38,9 +42,9 @@ ReactDOM.render(
 
 ```jsx
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 );
 ```
 
@@ -87,10 +91,10 @@ re-render to node
 let seconds = 0;
 
 let rerender = setInterval(() => {
-  seconds++;
-  // note
-  // happens at commitDetachRef *and* commitAttachRef via callback
-  root.render(<App seconds={seconds} />);
+	seconds++;
+	// note
+	// happens at commitDetachRef *and* commitAttachRef via callback
+	root.render(<App seconds={seconds} />);
 }, 1000);
 ```
 
@@ -108,11 +112,11 @@ https://github.com/reactwg/react-18/discussions/5
 import * as ReactDOM from "react-dom";
 
 function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+	return (
+		<div>
+			<h1>Hello World</h1>
+		</div>
+	);
 }
 
 const rootElement = document.getElementById("root");
@@ -126,12 +130,12 @@ ReactDOM.render(<App />, rootElement, () => console.log("rendered"));
 import * as ReactDOM from "react-dom";
 
 function App({ callback }) {
-  // Callback will be called when the div is first created.
-  return (
-    <div ref={callback}>
-      <h1>Hello World</h1>
-    </div>
-  );
+	// Callback will be called when the div is first created.
+	return (
+		<div ref={callback}>
+			<h1>Hello World</h1>
+		</div>
+	);
 }
 
 const rootElement = document.getElementById("root");
@@ -147,21 +151,31 @@ root.render(<App callback={() => console.log("renderered")} />);
   - can't use fragment because there is no ref
 - could also just call the function if you don't care about getting a reference to the dom node
 
-### Autamic batching
+## Opt into Automatic Batching with createRoot
 
-#### Understand how event handler batching works in v16 and v17
+React 18 comes with out-of-the-box performance improvements when using `createRoot`. Most notable is automatic batching of state updates, reducing re-renders. In previous versions of React, state updates that happened outside of event handlers were not batched. In React 18, all updates are batched regardless of when or where they are called.
 
-#### See Automatic batching in practice
+## Remove Extraneous `unstable_batchedUpdates` calls
 
-#### Opt-out of automitic batching in React 18 with flushSync()
+React 17 exposes an undocumented API named `unstable_batchedUpdates`. It's used to batch multiple `useState` update calls — inside of asynchronous callbacks — and reduce extraneous renders. In React 18, all `useState` updates are batched rendering `unstable_batchedUpdates` inert. We remove all uses of `unstable_batchedUpdates`.
 
-#### automatic batching with class components
+## Opt-out of Automatic Batching with ReactDOM.flushSync
 
-#### opt-out of automitic batching in class components with flushSync()
+In React 18, `useState` update calls are batched for improved performance. Use `ReactDOM.flushSync` to remove update calls from batching. This is useful for reading the DOM after a state change.
 
-#### Remove extranious `unstable_batchedUpdates` usage
+---
 
-//
+## Where to learn more about React 18
+
+{{point to the discussion}}
+
+---
+
+Example: I'm starting to like `{number} {isOdd ? "odd" : "even" }
+
+Contrived but you can see why they need to remain in sync.
+
+---
 
 ### [outro] Concurrent "mode" is dead (what's next)
 

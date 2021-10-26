@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// Assignment 1:
-// Nothing to change here
-// Update your React 18 in package.json
-// Using `react@next` and `react-dom@next`
+// Assignment 2:
+// Update ReactDOM.render to ReactDOM.createRoot(rootNode).render(component)
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
