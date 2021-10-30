@@ -4,11 +4,15 @@
 
 ## Lessons
 
-## The gradual adoption strategy of React 18
+## Understand the gradual adoption strategy of React 18
+
+In this lesson, Michael explains the design of React 18's adoption strategy, what it means for your apps, and how you can start testing in prerelease versions of React 18 today.
 
 https://reactjs.org/blog/2021/06/08/the-plan-for-react-18.html#a-gradual-adoption-strategy
 
 ## Update React dependencies using @next version tag
+
+In this lesson, we update React from v17 to prerelease React 18. We take this chance to understand React versioning, and release channels, and npm tags.
 
 - `npm i react@next`
 - `npm i react-dom@next`
@@ -22,6 +26,8 @@ _Links_
 - https://www.npmjs.com/package/react-dom
 
 ### Replace legacy root API (render) with new root API (createRoot)
+
+In this lesson, we utilize React 18's new root API. This opts us into React 18 performance optimizations.
 
 - Update to the new `ReactDOM.createRoot` api from `ReactDOM.render`
 - Simple mechanical operation
@@ -77,9 +83,9 @@ TODO:
 
 ---
 
-### Use both classic renderer and React 18 renderer
+### Use both React 18's legacy root API and new root API in the same app
 
-// TODO
+In this lesson, we utilize two React roots. We render a portion of our app using the legacy root API (v17 compatable) and a second using the new root API (v18 exclusive). This makes it possible to migrate an App in smaller motions. 
 
 ### `createRoot` callback
 

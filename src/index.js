@@ -1,3 +1,5 @@
+import "./worksheet";
+
 // import "./lessons/lesson1";
 // import "./lessons/lesson1/solution";
 
@@ -20,7 +22,7 @@
 // import "./lessons/lesson7/solution";
 
 // import "./lessons/lesson8";
-import "./lessons/lesson8/solution";
+// import "./lessons/lesson8/solution";
 
 // import "./lessons/lesson9";
 // import "./lessons/lesson9/solution";

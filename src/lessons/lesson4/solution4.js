@@ -1,20 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// if you don't want a wrapping div,
-// you can still guarantee a dom node with a sibling
+// Assignment 4:
+// Replace Legacy Root API's Callback Argument
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-// use requestIdleTimeout if you want to just wait for low-priority idle time
-// window.requestIdleCallback(
-// 	() => console.log("Rendered: low-priority idle timeout"),
-// 	1000
-// );
+let root = document.getElementById("root");
 
-// and use setTimeout if you just want to wait until after React yields the first time
-// also useful if you need to support browsers other than Safari
-// window.setTimeout(() => console.log("Rendered: low-priority idle timeout"), 0);
+ReactDOM.createRoot(root).render(
+	<App callback={(ref) => console.log(ref.tagName)} />
+);
+// window.setTimeout(() => console.log("React rendered"), 0);
 
-function App() {
-	return <div>Hello, React!</div>;
+function App({ callback }) {
+	// React.useEffect(() => console.log("React rendered"), [])
+	return <div ref={callback}>Hello, React!</div>;
 }

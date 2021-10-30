@@ -2,9 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // Assignment 5:
-// Conditionally render using legacy root
+// Conditionally Render with Legacy Root API or New Root API
 
-ReactDOM.render(<App />, document.getElementById("root"));
+let root = document.getElementById("root");
+
+ReactDOM.render(<App />, root);
 
 function App() {
 	return <div>Hello React!</div>;

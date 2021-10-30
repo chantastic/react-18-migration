@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // lesson 6:
-// opt-in to automatic batching in React 18 with createRoot
-// - add a setTimeout to the state update calls
-// - note how the re-render count goes up
+// Opt-in to Automatic Batching with createRoot
 
 const root = document.getElementById("root");
 
-if (false /* render with new root API */) {
+let REACT_18 = false;
+
+if (REACT_18) {
 	ReactDOM.createRoot(root).render(<App />);
 } else {
 	ReactDOM.render(<App />, root);
@@ -19,8 +19,10 @@ function App() {
 	let [isOdd, updateIsOdd] = React.useState(true);
 
 	function handleClick() {
-		updateCount((count) => count + 1);
-		updateIsOdd((oddness) => !oddness);
+		setTimeout(() => {
+			updateCount((count) => count + 1);
+			updateIsOdd((oddness) => !oddness);
+		}, 0);
 	}
 
 	console.count("re-rendered");

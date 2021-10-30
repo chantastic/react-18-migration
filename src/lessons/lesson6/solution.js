@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+// lesson 6:
+// Opt-in to Automatic Batching with createRoot
+
 const root = document.getElementById("root");
 
-if (true /* render with new root API */) {
+let REACT_18 = true;
+
+if (REACT_18) {
 	ReactDOM.createRoot(root).render(<App />);
 } else {
 	ReactDOM.render(<App />, root);
