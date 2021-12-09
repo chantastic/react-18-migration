@@ -13,5 +13,5 @@ let react18Root = ReactDOM.createRoot(root1);
 react18Root.render(<App root="New Root API" />);
 
 function App({ root }) {
-  return <div>Hello, React {root}!</div>;
+	return <p>Hello, React {root}!</p>;
 }

@@ -8,5 +8,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 function App({ callback }) {
-	return <div ref={callback}>Hello, React!</div>;
+	return <p ref={callback}>Hello, React!</p>;
 }

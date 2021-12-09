@@ -1,4 +1,4 @@
-import "./worksheet";
+import "./lessons/lesson1";
 
 // import "./lessons/lesson1";
 // import "./lessons/lesson1/solution";

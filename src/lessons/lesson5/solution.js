@@ -16,5 +16,5 @@ if (REACT_18) {
 }
 
 function App() {
-	return <div>Hello React!</div>;
+	return <p>Hello React!</p>;
 }

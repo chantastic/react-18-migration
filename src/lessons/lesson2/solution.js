@@ -7,5 +7,5 @@ import ReactDOM from "react-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
 function App() {
-  return <div>Hello, React!</div>;
+	return <p>Hello, React!</p>;
 }

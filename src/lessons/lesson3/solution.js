@@ -14,5 +14,5 @@ react18Root.render(<App root="New Root API" />);
 ReactDOM.render(<App root="Legacy Root API" />, root2);
 
 function App({ root }) {
-  return <div>Hello, React {root}!</div>;
+	return <p>Hello, React {root}!</p>;
 }

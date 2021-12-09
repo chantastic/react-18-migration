@@ -9,5 +9,5 @@ let root = document.getElementById("root");
 ReactDOM.render(<App />, root);
 
 function App() {
-	return <div>Hello React!</div>;
+	return <p>Hello React!</p>;
 }

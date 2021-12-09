@@ -5,9 +5,9 @@ import ReactDOM from "react-dom";
 // Retain callback, using createRoot
 
 ReactDOM.render(<App />, document.getElementById("root"), () =>
-  console.log("React rendered")
+	console.log("React rendered")
 );
 
 function App() {
-  return <div>Hello, React!</div>;
+	return <p>Hello, React!</p>;
 }

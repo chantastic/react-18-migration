@@ -13,5 +13,5 @@ ReactDOM.createRoot(root).render(
 
 function App({ callback }) {
 	// React.useEffect(() => console.log("React rendered"), [])
-	return <div ref={callback}>Hello, React!</div>;
+	return <p ref={callback}>Hello, React!</p>;
 }
