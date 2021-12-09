@@ -28,7 +28,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<button type="button" onClick={this.handleClick}>
+				<button type="button" onClick={this.handleClick.bind(this)}>
 					{this.state.count} {this.state.isOdd.toString()}
 				</button>
 			</div>

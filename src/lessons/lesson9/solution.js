@@ -21,7 +21,9 @@ class App extends React.Component {
 			// logs partial state change
 			console.log(this.state);
 
-			this.setState(({ isOdd }) => ({ isOdd: !isOdd }));
+			ReactDOM.flushSync(() => {
+				this.setState(({ isOdd }) => ({ isOdd: !isOdd }));
+			});
 
 			// logs same partial state change
 			console.log(this.state);
@@ -33,7 +35,7 @@ class App extends React.Component {
 
 		return (
 			<div>
-				<button type="button" onClick={this.handleClick}>
+				<button type="button" onClick={this.handleClick.bind(this)}>
 					{count} {isOdd.toString()}
 				</button>
 			</div>
